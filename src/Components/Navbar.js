@@ -1,24 +1,55 @@
 // src/components/Navbar.js
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 function Navbar() {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  // Toggle collapse for mobile view
+  const handleToggle = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Expense Tracker
         </Link>
-        <div className="collapse navbar-collapse">
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={handleToggle}
+          aria-controls="navbarNav"
+          aria-expanded={!isCollapsed}
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className={`collapse navbar-collapse ${isCollapsed ? '' : 'show'}`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  'nav-link' + (isActive ? ' active' : '')
+                }
+                to="/"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/transactions">
+              <NavLink
+                className={({ isActive }) =>
+                  'nav-link' + (isActive ? ' active' : '')
+                }
+                to="/transactions"
+              >
                 Transactions
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
