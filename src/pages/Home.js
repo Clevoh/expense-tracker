@@ -1,5 +1,6 @@
 // src/pages/Home.js
 import ExpenseChart from "../components/ExpenseChart"; // Ensure correct case for the 'components' folder
+import './App.css';
 
 function Home({ transactions = [] }) {
   // Calculate the total balance and format to 2 decimal places

@@ -1,19 +1,21 @@
-// src/components/TransactionList.js
-function TransactionList({ transactions }) {
-    return (
-      <div>
-        <h4>Transaction List</h4>
-        <ul className="list-group">
-          {transactions.map((t, index) => (
-            <li key={index} className="list-group-item d-flex justify-content-between">
-              <span>{t.description}</span>
-              <span>${t.amount.toFixed(2)}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-  
-  export default TransactionList;
-  
+function TransactionList({ transactions, deleteTransaction }) {
+  return (
+    <ul className="list-group">
+      {transactions.map((transaction, index) => (
+        <li key={index} className="list-group-item d-flex justify-content-between">
+          <span>
+            {transaction.description}: ${transaction.amount}
+          </span>
+          <button
+            className="btn btn-danger btn-sm"
+            onClick={() => deleteTransaction(index)}
+          >
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default TransactionList;

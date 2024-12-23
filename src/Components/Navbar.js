@@ -1,6 +1,5 @@
-// src/components/Navbar.js
-import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function Navbar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -27,14 +26,14 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className={`collapse navbar-collapse ${isCollapsed ? '' : 'show'}`}
+          className={`collapse navbar-collapse ${isCollapsed ? "" : "show"}`}
           id="navbarNav"
         >
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
-                  'nav-link' + (isActive ? ' active' : '')
+                  "nav-link" + (isActive ? " active" : "")
                 }
                 to="/"
               >
@@ -44,11 +43,21 @@ function Navbar() {
             <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
-                  'nav-link' + (isActive ? ' active' : '')
+                  "nav-link" + (isActive ? " active" : "")
                 }
                 to="/transactions"
               >
                 Transactions
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className={({ isActive }) =>
+                  "nav-link" + (isActive ? " active" : "")
+                }
+                to="/expense-tracker"
+              >
+                Expense Tracker
               </NavLink>
             </li>
           </ul>
